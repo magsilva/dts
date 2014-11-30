@@ -9,13 +9,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.ironiacorp.dts.resource.ContinuousResource;
+import com.ironiacorp.dts.resource.Resource;
 import com.ironiacorp.dts.unit.Time;
 import com.ironiacorp.dts.unit.Unit;
 import com.ironiacorp.dts.unit.Watt;
 
 public class Simulator
 {
-	private Map<Class<? extends Unit>, Double> state;
+	private Map<Class<? extends Unit>, Double> status;
 	
 	private Set<Resource> resources;
 	
@@ -25,7 +27,7 @@ public class Simulator
 	
 	public Simulator()
 	{
-		state = new HashMap<Class<? extends Unit>, Double>();
+		status = new HashMap<Class<? extends Unit>, Double>();
 		resources = new HashSet<Resource>();
 	}
 	
@@ -63,15 +65,15 @@ public class Simulator
 					if (quanta.getQuantaType() == ProcessType.CONSUMPTION) {
 						value *= -1;
 					}
-					if (state.containsKey(quanta.getType())) {
-						value += state.get(quanta.getType());
+					if (status.containsKey(quanta.getType())) {
+						value += status.get(quanta.getType());
 					}
-					state.put(quanta.getType(), value);
+					status.put(quanta.getType(), value);
 				}
 			}
 			calendar.add(Calendar.DAY_OF_MONTH, 0);
-			for (Class<? extends Unit> unit : state.keySet()) {
-				System.out.println(calendar.getTime().toLocaleString() + " = " + state.get(unit));
+			for (Class<? extends Unit> unit : status.keySet()) {
+				System.out.println(calendar.getTime().toLocaleString() + " = " + status.get(unit));
 			}
 		}
 		
@@ -88,7 +90,7 @@ public class Simulator
 		sim.setStartDate(calendar.getTime());
 		
 		calendar.clear();
-		calendar.set(2011, 11, 31);
+		calendar.set(2011, 0, 2);
 		sim.setEndDate(calendar.getTime());
 		
 		ContinuousResource resource = new ContinuousResource();

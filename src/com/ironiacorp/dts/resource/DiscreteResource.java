@@ -1,9 +1,12 @@
-package com.ironiacorp.dts;
+package com.ironiacorp.dts.resource;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.ironiacorp.dts.ProcessType;
+import com.ironiacorp.dts.Quanta;
+import com.ironiacorp.dts.periodicity.Periodicity;
 import com.ironiacorp.dts.unit.Watt;
 
 public class DiscreteResource implements Resource
@@ -32,8 +35,12 @@ public class DiscreteResource implements Resource
 	public List<Quanta> step(Date startDate, Date endDate) {
 		List<Quanta> result = new ArrayList<Quanta>();
 		
+		// TODO: fix this
 		Quanta quantum = new Quanta();
-		quantum.setQuantaType(QuantaType.CONSUMED);
-		quantum.setType(resource.getInputTypes())
+		quantum.setQuantaType(ProcessType.CONSUMPTION);
+		// quantum.setType(resource.getInputTypes());
+		result.add(quantum);
+		
+		return result;
 	}
 }

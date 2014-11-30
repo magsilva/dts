@@ -1,4 +1,5 @@
-package com.ironiacorp.dts;
+package com.ironiacorp.dts.periodicity;
+
 
 public class FixedDayMonthPeriodicity extends Periodicity
 {

@@ -1,4 +1,4 @@
-package com.ironiacorp.dts;
+package com.ironiacorp.dts.resource;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.ironiacorp.dts.ProcessType;
+import com.ironiacorp.dts.Quanta;
+import com.ironiacorp.dts.Rate;
 import com.ironiacorp.dts.unit.Time;
 import com.ironiacorp.dts.unit.Unit;
 import com.ironiacorp.dts.unit.Watt;
